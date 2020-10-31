@@ -32,8 +32,8 @@ $(document).ready(function() {
             pastSearches(findLocation);
           }
           
-          // clear any old content
-          $("#todayDate").empty();
+          // clear any old content so that only one location is shown at a time
+          $("#todayDate").empty("");
   
           // create HTML card elements using jQuery in conjunction with ajax pulls from Open weather 
           let cardBody = $("<div>").addClass("card-body");
@@ -42,11 +42,11 @@ $(document).ready(function() {
           let windSpeed = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed + " MPH");
           let humidityIndex = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
           let temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " °F");
-          
+          //let tempF = ((temp-273.15)*1.8)+32;
           // Append card elements to html
-          cardBody.append(cityName, temp, humidityIndex, windSpeed);
+          cardBody.append(cityName, ((temp-273.15)*1.8)+32, humidityIndex, windSpeed);
           card.append(cardBody);
-          $("#today").append(card);
+          $("#todayDate").append(card);
          }
       });
     }
@@ -61,4 +61,3 @@ $(document).ready(function() {
       pastSearches(history[i]);
     }
   });
-  
