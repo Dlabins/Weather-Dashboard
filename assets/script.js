@@ -25,7 +25,7 @@ $(document).ready(function() {
             window.localStorage.setItem("history", JSON.stringify(history));
       
             pastSearches(findLocation);
-          }
+          };
           
           // clear any old content so that only one location is shown at a time
           $("#todayDate").empty("");
