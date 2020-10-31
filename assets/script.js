@@ -19,7 +19,7 @@ $(document).ready(function() {
     }
   //Function to output ajax request allowing user to complete a search for their weather
     function searchWeather(findLocation) {
-        let queryUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + findLocation + "&appid=245f9b4de91f060c764cbeade9c3ab1b";
+        let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + findLocation + "&appid=245f9b4de91f060c764cbeade9c3ab1b";
        $.ajax({
         type: "GET",
         url: queryUrl,
@@ -43,6 +43,7 @@ $(document).ready(function() {
           let windSpeed = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed + " MPH");
           let humidityIndex = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
           let temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " °F");
+          
           
           //let tempF = ((temp-273.15)*1.8)+32; Could not get a Kelvin to Fahrenheit conversion in jquery 
 
