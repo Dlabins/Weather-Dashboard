@@ -15,4 +15,4 @@ WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast.
 While this application does not meet all of the above criteria, the daily weather is still accessible. This application can be found at the following link: https://dlabins.github.io/Weather-Dashboard/.
 
-![](Weathersnapshot.png)
+![snapshot](assets/Weathersnapshot.png)
