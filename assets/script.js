@@ -1,3 +1,4 @@
+//allows javascript code to run once DOM is safe to use
 $(document).ready(function() {
   // gets user inputed location/value for weather search when search button is clicked
     $("#search").on("click", function() {
@@ -7,7 +8,7 @@ $(document).ready(function() {
   
       searchWeather(findLocation);
     });
-    
+    //creates a history list of past searches to be displayed
     $(".history").on("click", "li", function() {
       searchWeather($(this).text());
     });
@@ -16,7 +17,7 @@ $(document).ready(function() {
       var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
       $(".history").append(li);
     }
-  
+  //Function to output ajax request allowing user to complete a search for their weather
     function searchWeather(findLocation) {
         let queryUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + findLocation + "&appid=245f9b4de91f060c764cbeade9c3ab1b";
        $.ajax({
@@ -42,16 +43,18 @@ $(document).ready(function() {
           let windSpeed = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed + " MPH");
           let humidityIndex = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
           let temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " °F");
-          //let tempF = ((temp-273.15)*1.8)+32;
-          // Append card elements to html
-          cardBody.append(cityName, ((temp-273.15)*1.8)+32, humidityIndex, windSpeed);
+          
+          //let tempF = ((temp-273.15)*1.8)+32; Could not get a Kelvin to Fahrenheit conversion in jquery 
+
+          // Append card elements to html dynamically
+          cardBody.append(cityName, temp, humidityIndex, windSpeed);
           card.append(cardBody);
           $("#todayDate").append(card);
          }
       });
     }
     // Recalls search history of locations from local storage 
-    var history = JSON.parse(window.localStorage.getItem("history")) || [];
+    var history = JSON.parse(window.localStorage.getItem("history"));
   
     if (history.length > 0) {
       searchWeather(history[history.length-1]);
