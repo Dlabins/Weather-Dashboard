@@ -52,15 +52,9 @@ $(document).ready(function() {
           $("#todayDate").append(card);
          }
       });
-    }
+    
     // Recalls search history of locations from local storage 
     var history = JSON.parse(window.localStorage.getItem("history"));
-  
-    if (history.length > 0) {
-      searchWeather(history[history.length-1]);
     }
+});
   
-    for (var i = 0; i < history.length; i++) {
-      pastSearches(history[i]);
-    }
-  });
