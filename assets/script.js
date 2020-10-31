@@ -8,15 +8,9 @@ $(document).ready(function() {
   
       searchWeather(findLocation);
     });
-    //creates a history list of past searches to be displayed
-    $(".history").on("click", "li", function() {
-      searchWeather($(this).text());
+    
     });
  
-    function pastSearches(text) {
-      var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
-      $(".history").append(li);
-    }
   //Function to output ajax request allowing user to complete a search for their weather
     function searchWeather(findLocation) {
         let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + findLocation + "&appid=245f9b4de91f060c764cbeade9c3ab1b";
@@ -37,9 +31,9 @@ $(document).ready(function() {
           $("#todayDate").empty("");
   
           // create HTML card elements using jQuery in conjunction with ajax pulls from Open weather 
-          let cardBody = $("<div>").addClass("card-body");
+          let cardBody = $("<section>").addClass("card-body");
           let cityName = $("<h1>").addClass("card-title").text(data.name) ;
-          let card = $("<div>").addClass("card");
+          let card = $("<section>").addClass("card");
           let windSpeed = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed + " MPH");
           let humidityIndex = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
           let temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " °F");
@@ -57,5 +51,5 @@ $(document).ready(function() {
     // Recalls search history of locations from local storage 
     var history = JSON.parse(window.localStorage.getItem("history"));
     }
-});
+
   
