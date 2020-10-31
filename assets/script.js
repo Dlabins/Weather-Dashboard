@@ -8,20 +8,9 @@ $(document).ready(function() {
   
       searchWeather(findLocation);
     });
-   // $(document).keyup(function(event) {
-   // if (event.keyCode === 13){
-    //$("#search").click();
-    //}
-    $(document).ready(function() {
-    $("#search").keyup(function() {
-   $("#search").val();})
-  
-    searchWeather(findLocation);
-    
-});
+   });
 
- 
-  //Function to output ajax request allowing user to complete a search for their weather
+//Function to output ajax request allowing user to complete a search for their weather
     function searchWeather(findLocation) {
         let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + findLocation + "&appid=245f9b4de91f060c764cbeade9c3ab1b";
        $.ajax({
@@ -34,6 +23,7 @@ $(document).ready(function() {
           $("<section>").empty();
   
           // create HTML card elements using jQuery in conjunction with ajax pulls from Open weather 
+          //create bootstrap card classes for data to be displayed on
           let cardBody = $("<section>").addClass("card-body");
           let cityName = $("<h1>").addClass("card-title").text(data.name) ;
           let card = $("<section>").addClass("card");
@@ -54,4 +44,3 @@ $(document).ready(function() {
          }
       });
     };
-});
